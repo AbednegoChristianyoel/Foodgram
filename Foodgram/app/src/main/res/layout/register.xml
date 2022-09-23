@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register"
+    tools:context=".Register">
+
+    <TextView
+        android:id="@+id/Textreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Buat Akun"
+        android:textSize="40dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/form"
+        android:layout_below="@+id/Textreg" >
+
+        <com.google.android.material.textfield.TextInputLayout
+            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/namereg"
+            android:layout_width="340dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:startIconDrawable="@drawable/person" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:hint="Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/emailreg"
+            android:layout_width="340dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="15dp"
+            app:startIconDrawable="@drawable/email" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:hint="Email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/phonereg"
+            android:layout_width="340dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            app:startIconDrawable="@drawable/phone" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:hint="Phone Number"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/passwordreg"
+            android:layout_width="340dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="15dp"
+            app:startIconDrawable="@drawable/lock"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:hint="Password"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/datereg"
+            android:layout_width="340dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            app:startIconDrawable="@drawable/date" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:hint="Date" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/form"
+        android:text="I have read and agree to the Privacy Policy, Terms of Service, and Community Guidelines"
+        android:layout_marginStart="30dp"
+        android:id="@+id/checkbox"
+        android:layout_marginEnd="30dp" />
+
+    <Button
+        android:id="@+id/button_1"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/checkbox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:alpha="0.6"
+        android:background="@drawable/button_round"
+        android:fontFamily="@font/poppins"
+        android:paddingTop="1dp"
+        android:text="Masuk"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>
