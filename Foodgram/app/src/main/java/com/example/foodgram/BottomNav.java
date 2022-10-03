@@ -1,5 +1,6 @@
 package com.example.foodgram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -18,6 +19,12 @@ public class BottomNav extends AppCompatActivity {
     LikeFragment likeFragment = new LikeFragment();
     PostFragment postFragment = new PostFragment();
 
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(this, BottomNav.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
