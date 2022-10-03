@@ -108,7 +108,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:hint="Date" />
+                android:hint="Age"
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 

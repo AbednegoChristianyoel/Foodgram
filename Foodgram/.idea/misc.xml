@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/drawable/ic_home.xml" value="0.156" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/bottom_nav.xml" value="0.25" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/fragment_explore.xml" value="0.25" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/fragment_like.xml" value="0.10989583333333333" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/fragment_notification.xml" value="0.10989583333333333" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/fragment_settings.xml" value="0.10989583333333333" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/layout/register.xml" value="0.25" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+        <entry key="..\:/Github/Foodgram/Foodgram/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1285" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/button_round.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/date.xml" value="0.194" />
