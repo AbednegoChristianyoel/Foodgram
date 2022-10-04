@@ -15,10 +15,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    DatabaseReference reference;
+
     private EditText name, email, password, pnumber, age;
     private Button btn_Regis;
     private TextView textRegis;
@@ -41,9 +48,28 @@ public class RegisterActivity extends AppCompatActivity {
         btn_Regis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Register();
+                String str_nama = name.getText().toString().trim();
+                String str_mail = email.getText().toString().trim();
+                String str_num = pnumber.getText().toString().trim();
+                String str_pass = password.getText().toString().trim();
+                String str_umur = age.getText().toString().trim();
+
+                if(str_nama.isEmpty()){
+                    name.setError("Nama Tidak boleh kosong!");
+                }else if(str_mail.isEmpty()){
+                    email.setError("Email Tidak boleh kosong!");
+                }else if(str_num.isEmpty()){
+                    pnumber.setError("Nomor Telepon Tidak boleh kosong!");
+                }else if(str_pass.isEmpty()){
+                    password.setError("Password Tidak boleh kosong!");
+                }else if(str_umur.isEmpty()){
+                    age.setError("Umur Tidak boleh kosong!");
+                }else{
+                    Register(str_nama, str_pass, str_mail, str_num, str_umur);
+                }
             }
         });
+
         textRegis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,33 +80,37 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void Register(){
-        String nama = name.getText().toString().trim();
-        String mail = email.getText().toString().trim();
-        String num = pnumber.getText().toString().trim();
-        String pass = password.getText().toString().trim();
-        String umur = age.getText().toString().trim();
+    private void Register(String nama, String password, String email, String nphone, String age){
 
-        if(nama.isEmpty()){
-            name.setError("Nama Tidak boleh kosong!");
-        }else if(mail.isEmpty()){
-            email.setError("Email Tidak boleh kosong!");
-        }else if(num.isEmpty()){
-            pnumber.setError("Nomor Telepon Tidak boleh kosong!");
-        }else if(pass.isEmpty()){
-            password.setError("Password Tidak boleh kosong!");
-        }else if(umur.isEmpty()){
-            age.setError("Umur Tidak boleh kosong!");
-        }
-        else{
-            mAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(RegisterActivity.this, "User registered successfully!", Toast.LENGTH_SHORT).show();
 
-                        startActivity(new Intent(RegisterActivity.this,BottomNav.class));
-                        finish();
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        String userid = firebaseUser.getUid();
+
+                        reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
+
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("id", userid);
+                        hashMap.put("nama", nama);
+                        hashMap.put("email", email);
+                        hashMap.put("nophone", nphone);
+                        hashMap.put("age", age);
+
+                        hashMap.put("bio", "");
+                        hashMap.put("imageurl","https://firebasestorage.googleapis.com/v0/b/foodgram-6b3b2.appspot.com/o/logo.png?alt=media&token=54eb5204-29b6-4e03-afff-5378cad422e0");
+
+                        reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent intent = new Intent(RegisterActivity.this, BottomNav.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        });
                     }else{
                         Toast.makeText(RegisterActivity.this, "Registration Failed!!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -88,4 +118,3 @@ public class RegisterActivity extends AppCompatActivity {
             });
         }
     }
-}
