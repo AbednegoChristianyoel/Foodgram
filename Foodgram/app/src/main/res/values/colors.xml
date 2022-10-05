@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pastel">#DCD7C9</color>
     <color name="blue">#0645AD</color>
+    <color name="darkgreen">#3F4E4F</color>
+    <color name="drakgrey">#303E3F</color>
+    <color name="grey">#808080</color>
 </resources>

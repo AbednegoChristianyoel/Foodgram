@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText mail, password;
+    private EditText email, password;
     private Button btn_Login;
     private TextView textRegis;
 
@@ -34,9 +34,10 @@ public class LoginActivity extends AppCompatActivity {
 
         btn_Login = findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
-        mail = findViewById(R.id.emaillog);
+        email = findViewById(R.id.emaillog);
         password = findViewById(R.id.passwordlog);
         textRegis = findViewById(R.id.text_register);
+
 
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        String user= mail.getText().toString().trim();
+        String user= email.getText().toString().trim();
         String pass= password.getText().toString().trim();
         if (user.isEmpty()){
-            mail.setError("Email can not be empty..");
+            email.setError("Email can not be empty..");
 
         }if (pass.isEmpty()){
             password.setError("Password can not be empty..");

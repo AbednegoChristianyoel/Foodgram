@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -99,9 +100,10 @@ public class RegisterActivity extends AppCompatActivity {
                         hashMap.put("email", email);
                         hashMap.put("nophone", nphone);
                         hashMap.put("age", age);
+                        hashMap.put("search", nama.toLowerCase());
 
                         hashMap.put("bio", "");
-                        hashMap.put("imageurl","https://firebasestorage.googleapis.com/v0/b/foodgram-6b3b2.appspot.com/o/logo.png?alt=media&token=54eb5204-29b6-4e03-afff-5378cad422e0");
+                        hashMap.put("imageurl","https://firebasestorage.googleapis.com/v0/b/foodgram-6b3b2.appspot.com/o/profile.jpg?alt=media&token=336daeae-78d2-44e3-88e8-d5f764512ce9");
 
                         reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
