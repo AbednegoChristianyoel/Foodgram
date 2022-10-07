@@ -1,12 +1,17 @@
 package com.example.foodgram.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodgram.Adapter.UserAdapter;
+import com.example.foodgram.LoginActivity;
 import com.example.foodgram.Model.User;
 import com.example.foodgram.R;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +41,8 @@ public class ExploreFragment extends Fragment {
     private List<User> mUsers;
 
     EditText search_bar;
+    LinearLayout explore;
+    Button test;
 
 
     @Override
@@ -47,6 +55,23 @@ public class ExploreFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         search_bar = view.findViewById(R.id.search_bar);
+        test = view.findViewById(R.id.test);
+        explore = view.findViewById(R.id.explore);
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        search_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                explore.setVisibility(View.GONE);
+            }
+        });
 
         mUsers = new ArrayList<>();
         userAdapter = new UserAdapter(getContext(), mUsers);
@@ -74,12 +99,18 @@ public class ExploreFragment extends Fragment {
     }
 
     private void searchUsers(String s){
+        explore.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
         Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("search")
                 .startAt(s)
                 .endAt(s+"\uf8ff");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (search_bar.getText().toString().equals("")) {
+                    recyclerView.setVisibility(View.GONE);
+                    explore.setVisibility(View.VISIBLE);
+                }
                 mUsers.clear();
                 for(DataSnapshot snapshot1 : snapshot.getChildren()){
                     User user = snapshot1.getValue(User.class);
