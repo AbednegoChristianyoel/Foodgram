@@ -19,24 +19,28 @@
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/btn_glob.xml" value="0.232" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/btn_round_dark.xml" value="0.3745" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/button_round.xml" value="0.194" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/comment.xml" value="0.3405" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/date.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/email.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_explore.xml" value="0.332" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_launcher_background.xml" value="0.194" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/postframe.xml" value="0.3405" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/search.xml" value="0.3755" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_post.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_search.xml" value="0.48616600790513836" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/bottom_nav.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_explore.xml" value="0.33" />
-        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_home.xml" value="0.375" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_like.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_notification.xml" value="0.375" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_post.xml" value="0.375" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/fragment_settings.xml" value="0.375" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/post_item.xml" value="0.5349620893007582" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/register.xml" value="0.375" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/user_item.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.375" />

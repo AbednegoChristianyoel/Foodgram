@@ -61,8 +61,8 @@ public class BottomNav extends AppCompatActivity {
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, new ExploreFragment()).commit();
                             return true;
                         case R.id.post:
-                            getSupportFragmentManager().beginTransaction().replace(R.id.container, new PostFragment()).commit();
-                            return true;
+                            startActivity(new Intent(BottomNav.this, PostActivity.class));
+                            break;
                         case R.id.like:
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, new LikeFragment()).commit();
                             return true;
