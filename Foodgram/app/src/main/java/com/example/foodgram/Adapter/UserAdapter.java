@@ -68,7 +68,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREPS", Context.MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
                 editor.putString("profileid", user.getId());
                 editor.apply();
 
@@ -82,13 +82,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                 if(viewHolder.btn_follow.getText().toString().equals("follow")){
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(user.getId()).setValue(true);
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("following").child(firebaseUser.getUid()).setValue(true);
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
+                            .child("followers").child(firebaseUser.getUid()).setValue(true);
                 }else{
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(user.getId()).removeValue();
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("following").child(firebaseUser.getUid()).removeValue();
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
+                            .child("followers").child(firebaseUser.getUid()).removeValue();
                 }
             }
         });

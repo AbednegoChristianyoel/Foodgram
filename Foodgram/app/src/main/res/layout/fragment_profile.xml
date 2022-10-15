@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#3F4E4F">
+            android:background="@color/darkgreen">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -108,7 +108,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp">
@@ -137,7 +137,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="posts" />
+                                android:fontFamily="@font/poppins"
+                                android:text="Posts" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -158,7 +159,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="followers" />
+                                android:fontFamily="@font/poppins"
+                                android:text="Followers" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -179,7 +181,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="following" />
+                                android:fontFamily="@font/poppins"
+                                android:text="Following" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -187,40 +190,13 @@
                     <Button
                         android:id="@+id/edit_profile"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="36dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/button_round" />
+                        android:background="@drawable/btn_follow"
+                        android:textSize="15dp" />
 
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/last_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/button_round"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/my_fotos"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_grid" />
-
-                <ImageButton
-                    android:id="@+id/saved_fotos"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_bookmark" />
-
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

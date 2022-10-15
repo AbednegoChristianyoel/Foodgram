@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
     FirebaseUser firebaseUser;
     String profileid;
 
-    ImageButton my_fotos,saved_fotos;
+    ImageButton saved_fotos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,8 +58,6 @@ public class ProfileFragment extends Fragment {
         bio = view.findViewById(R.id.bio);
         username = view.findViewById(R.id.username);
         edit_profile = view.findViewById(R.id.edit_profile);
-        my_fotos = view.findViewById(R.id.my_fotos);
-        saved_fotos = view.findViewById(R.id.saved_fotos);
 
         userInfo();
         getFollowers();
@@ -69,7 +67,7 @@ public class ProfileFragment extends Fragment {
             edit_profile.setText("Edit Profile");
         } else {
             checkFollow();
-            saved_fotos.setVisibility(View.GONE);
+//            saved_fotos.setVisibility(View.GONE);
         }
 
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +87,7 @@ public class ProfileFragment extends Fragment {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(profileid).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
-                            .child("followers").child(firebaseUser.getUid()).setValue(true);
+                            .child("followers").child(firebaseUser.getUid()).removeValue();
                 }
             }
 
@@ -97,7 +95,6 @@ public class ProfileFragment extends Fragment {
         });
         
         return view;
-        // return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     private  void userInfo() {
@@ -163,7 +160,7 @@ public class ProfileFragment extends Fragment {
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference()
                 .child("Follow").child(profileid).child("following");
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 following.setText(""+snapshot.getChildrenCount());
