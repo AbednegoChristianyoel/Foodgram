@@ -22,6 +22,7 @@ import com.example.foodgram.Adapter.UserAdapter;
 import com.example.foodgram.LoginActivity;
 import com.example.foodgram.Model.User;
 import com.example.foodgram.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,8 +43,7 @@ public class ExploreFragment extends Fragment {
 
     EditText search_bar;
     LinearLayout explore;
-    Button test;
-
+    Button Logout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,12 +55,13 @@ public class ExploreFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         search_bar = view.findViewById(R.id.search_bar);
-        test = view.findViewById(R.id.test);
+        Logout = view.findViewById(R.id.test);
         explore = view.findViewById(R.id.explore);
 
-        test.setOnClickListener(new View.OnClickListener() {
+        Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
