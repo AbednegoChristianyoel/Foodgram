@@ -7,29 +7,33 @@
     tools:context=".Fragment.ProfileFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:id="@+id/bar">
+        android:background="?android:attr/windowBackground">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/darkgreen">
+            android:background="#3F4E4F">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Foodgram."
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
+
 
                 <ImageView
                     android:id="@+id/options"
@@ -58,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bar"
-        android:layout_marginTop="42dp">
+        android:layout_marginTop="13dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,14 +75,15 @@
                 android:id="@+id/top_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center
+"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image_profile"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
 
             </LinearLayout>
 
@@ -93,18 +98,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:maxLines="1"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppinsbold"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/bio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:maxLines="5"
-                    android:textColor="@color/black" />
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:maxLines="3"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/darkgreen" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -122,87 +128,102 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="35dp"
+                            android:layout_marginEnd="25dp"
                             android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Posts"
+                                android:textColor="@color/darkgreen"
+                                android:textSize="18sp" />
 
                             <TextView
                                 android:id="@+id/posts"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/darkgreen"
+                                android:textSize="22sp"
                                 android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins"
-                                android:text="Posts" />
+
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="35dp"
                             android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Followers"
+                                android:textColor="@color/darkgreen"
+                                android:textSize="18sp" />
 
                             <TextView
                                 android:id="@+id/followers"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/darkgreen"
+                                android:textSize="22sp"
                                 android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins"
-                                android:text="Followers" />
+
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="35dp"
+                            android:layout_marginStart="25dp"
                             android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Following"
+                                android:textColor="@color/darkgreen"
+                                android:textSize="18sp" />
 
                             <TextView
                                 android:id="@+id/following"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/darkgreen"
+                                android:textSize="22sp"
                                 android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins"
-                                android:text="Following" />
+
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/edit_profile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/btn_follow"
-                        android:textSize="15dp" />
+                        android:background="@drawable/button_round" />
 
                 </LinearLayout>
             </LinearLayout>
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_save"
