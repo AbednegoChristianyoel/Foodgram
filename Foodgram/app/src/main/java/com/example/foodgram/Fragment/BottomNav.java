@@ -1,19 +1,18 @@
-package com.example.foodgram;
+package com.example.foodgram.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
-import com.example.foodgram.Fragment.ExploreFragment;
-import com.example.foodgram.Fragment.HomeFragment;
-import com.example.foodgram.Fragment.LikeFragment;
-import com.example.foodgram.Fragment.PostFragment;
-import com.example.foodgram.Fragment.ProfileFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.example.foodgram.PostActivity;
+import com.example.foodgram.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,8 +44,19 @@ public class BottomNav extends AppCompatActivity {
 
         bottomNavigationView.setOnItemSelectedListener(navigationItemSelectedListener);
 
+        Bundle intent = getIntent().getExtras();
+        if(intent != null){
+            String publisher = intent.getString("publisherid");
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
+            SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+            editor.putString("profileid", publisher);
+            editor.apply();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).commit();
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                    new HomeFragment()).commit();
+        }
     }
 
     private NavigationBarView.OnItemSelectedListener navigationItemSelectedListener =
