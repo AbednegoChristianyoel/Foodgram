@@ -2,27 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/home"
-        android:enabled="true"
-        android:icon="@drawable/ic_home"
-        android:title="" />
-
+        android:icon="@drawable/ic_home"/>
     <item android:id="@+id/explore"
-        android:enabled="true"
-        android:icon="@drawable/ic_explore"
-        android:title=""/>
-
+        android:icon="@drawable/ic_explore"/>
     <item android:id="@+id/post"
-        android:enabled="true"
-        android:icon="@drawable/ic_post"
-        android:title=""/>
-
+        android:icon="@drawable/ic_post"/>
     <item android:id="@+id/like"
-        android:enabled="true"
-        android:icon="@drawable/ic_like"
-        android:title=""/>
-
+        android:icon="@drawable/ic_like"/>
     <item android:id="@+id/profile"
-        android:enabled="true"
-        android:icon="@drawable/ic_profile"
-        android:title=""/>
+        android:icon="@drawable/ic_profile"/>
 </menu>

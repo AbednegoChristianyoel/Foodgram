@@ -35,7 +35,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.lang.ref.Reference;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -124,7 +123,6 @@ public class EditProfileActivity extends AppCompatActivity {
         hashMap.put("nama",name);
         hashMap.put("bio",bio);
         hashMap.put("email",mail);
-        hashMap.put("search", name.toLowerCase());
 
         reference.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

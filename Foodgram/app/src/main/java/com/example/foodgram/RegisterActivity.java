@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.foodgram.Fragment.BottomNav;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -100,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                         hashMap.put("nophone", nphone);
                         hashMap.put("age", age);
                         hashMap.put("search", nama.toLowerCase());
+
                         hashMap.put("bio", "");
                         hashMap.put("imageurl","https://firebasestorage.googleapis.com/v0/b/foodgram-6b3b2.appspot.com/o/profile.jpg?alt=media&token=336daeae-78d2-44e3-88e8-d5f764512ce9");
 
