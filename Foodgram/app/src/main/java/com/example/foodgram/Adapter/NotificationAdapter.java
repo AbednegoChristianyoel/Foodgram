@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.foodgram.Fragment.PostDetailFragment;
 import com.example.foodgram.Fragment.PostFragment;
 import com.example.foodgram.Fragment.ProfileFragment;
 import com.example.foodgram.Model.Notification;
@@ -59,26 +60,25 @@ import java.util.List;
              holder.post_image.setVisibility(View.GONE);
          }
 
-//         holder.itemView.setOnClickListener(new View.OnClickListener() {
-//             @Override
-//             public void onClick(View view) {
-//                 if(notification.isIspost()){
-//                     SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-//                     editor.putString("postid", notification.getPostid());
-//                     editor.apply();
-//bottom nav -> Fragment_container
-//                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.bottom_navigation,
-//                             new PostDetailFragment()).commit();
-//                 }else{
-//                     SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-//                     editor.putString("profileid", notification.getUserid());
-//                     editor.apply();
-//
-//                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.bottom_navigation,
-//                             new ProfileFragment()).commit();
-//                 }
-//             }
-//         });
+         holder.itemView.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 if(notification.isIspost()){
+                     SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                     editor.putString("postid", notification.getPostid());
+                     editor.apply();
+                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                             new PostDetailFragment()).commit();
+                 }else{
+                     SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                     editor.putString("profileid", notification.getUserid());
+                     editor.apply();
+
+                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                             new ProfileFragment()).commit();
+                 }
+             }
+         });
      }
 
      @Override
@@ -93,9 +93,10 @@ import java.util.List;
          public ViewHolder(@NonNull View itemView) {
              super(itemView);
 
-             image_profile = itemView.findViewById(R.id.image_profile);
+             image_profile = itemView.findViewById(R.id.img_profile);
              post_image = itemView.findViewById(R.id.post_img);
              username = itemView.findViewById(R.id.username);
+             text = itemView.findViewById(R.id.comment);
          }
      }
 
