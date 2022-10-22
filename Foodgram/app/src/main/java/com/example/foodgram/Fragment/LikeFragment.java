@@ -40,6 +40,8 @@ public class LikeFragment extends Fragment {
         recyclerView  = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         notificationList = new ArrayList<>();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
         notificationAdapter = new NotificationAdapter(getContext(), notificationList);
         recyclerView.setAdapter(notificationAdapter);
 
