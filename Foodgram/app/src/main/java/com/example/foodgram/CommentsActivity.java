@@ -35,7 +35,7 @@ import java.util.List;
 public class CommentsActivity extends AppCompatActivity {
 
     EditText add_comment;
-    ImageView image_profile, post;
+    ImageView image_profile, post, backimage;
     RecyclerView recyclerView;
 
     String postid;
@@ -54,7 +54,15 @@ public class CommentsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Comments");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        backimage = findViewById(R.id.backimage);
+
+        backimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

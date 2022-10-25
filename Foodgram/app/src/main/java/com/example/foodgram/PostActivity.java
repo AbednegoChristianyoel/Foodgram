@@ -29,9 +29,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.yalantis.ucrop.UCrop;
 
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -44,6 +47,8 @@ public class PostActivity extends AppCompatActivity {
     ImageView image_added, close;
     Button post;
     EditText description, judulres, bahanres, carares ;
+    Boolean isUpload = false;
+    String destination = UUID.randomUUID().toString() + ".jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +83,14 @@ public class PostActivity extends AppCompatActivity {
         image_added.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectImage();
+                if(isUpload == false){
+                    selectImage();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Already upload photo", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
-
 
     private void selectImage(){
         final CharSequence[] items = {"Choose from Gallery", "Cancel"};
@@ -138,10 +146,10 @@ public class PostActivity extends AppCompatActivity {
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("postid", postid);
                         hashMap.put("postimage", myUrl);
-                        hashMap.put("description", description.getText().toString());
+                        hashMap.put("description", description.getText().toString().replace("\n", "\\n"));
                         hashMap.put("judul", judulres.getText().toString());
-                        hashMap.put("bahanres", bahanres.getText().toString());
-                        hashMap.put("carares", carares.getText().toString());
+                        hashMap.put("bahanres", bahanres.getText().toString().replace("\n", "\\n"));
+                        hashMap.put("carares", carares.getText().toString().replace("\n", "\\n"));
 
                         hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -173,9 +181,16 @@ public class PostActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 20 && resultCode==RESULT_OK && data !=null){
             final Uri path = data.getData();
-            mImageUri = path;
+            UCrop.of(path, Uri.fromFile(new File(getCacheDir(), destination)))
+                    .withAspectRatio(1,1)
+                    .start(this);
+
+        }else if(resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP){
+            Uri resulturi = UCrop.getOutput(data);
+            mImageUri = resulturi;
             image_added.setImageURI(mImageUri);
             image_added.setBackgroundResource(0);
+            isUpload = true;
         }else{
             Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(PostActivity.this, BottomNav.class));

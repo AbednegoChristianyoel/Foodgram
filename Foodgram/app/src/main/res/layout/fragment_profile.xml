@@ -23,6 +23,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/banner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -34,25 +35,17 @@
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
-
-                <ImageView
-                    android:id="@+id/options"
+                <Button
+                    android:id="@+id/logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_option" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="100dp"
+                    android:backgroundTint="@color/pastel"
+                    android:text="LOGOUT"
+                    android:textColor="@color/black" />
 
-
-                <!--            <TextView-->
-                <!--                android:id="@+id/bio"-->
-                <!--                android:layout_width="wrap_content"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_below="@+id/username"-->
-                <!--                android:layout_centerHorizontal="true"-->
-                <!--                android:layout_marginTop="3sp"-->
-                <!--                android:textColor="@color/black"-->
-                <!--                android:textSize="11sp" />-->
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

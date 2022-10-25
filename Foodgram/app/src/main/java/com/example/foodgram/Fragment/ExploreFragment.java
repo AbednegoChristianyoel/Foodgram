@@ -1,28 +1,25 @@
 package com.example.foodgram.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodgram.Adapter.MyPhotosAdapter;
 import com.example.foodgram.Adapter.UserAdapter;
-import com.example.foodgram.LoginActivity;
+import com.example.foodgram.Model.Post;
 import com.example.foodgram.Model.User;
 import com.example.foodgram.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,19 +28,20 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 
 public class ExploreFragment extends Fragment {
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, recyclerViewExplore;
     private UserAdapter userAdapter;
+    private MyPhotosAdapter myPhotosAdapter;
     private List<User> mUsers;
+    private List<Post> mPost;
 
     EditText search_bar;
     LinearLayout explore;
-    Button Logout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,18 +52,16 @@ public class ExploreFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        search_bar = view.findViewById(R.id.search_bar);
-        Logout = view.findViewById(R.id.test);
-        explore = view.findViewById(R.id.explore);
+        recyclerViewExplore = view.findViewById(R.id.recycler_viewExplore);
+        recyclerViewExplore.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(),2);
+        recyclerViewExplore.setLayoutManager(linearLayoutManager);
+        mPost = new ArrayList<>();
+        myPhotosAdapter = new MyPhotosAdapter(getContext(),mPost);
+        recyclerViewExplore.setAdapter(myPhotosAdapter);
 
-        Logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        search_bar = view.findViewById(R.id.search_bar);
+        explore = view.findViewById(R.id.explore);
 
         search_bar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +92,7 @@ public class ExploreFragment extends Fragment {
             }
         });
 
+        myPhotos();
         return view;
     }
 
@@ -142,6 +139,27 @@ public class ExploreFragment extends Fragment {
 
                     userAdapter.notifyDataSetChanged();
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void myPhotos(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mPost.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Post post = dataSnapshot.getValue(Post.class);
+                    mPost.add(post);
+                }
+                Collections.reverse(mPost);
+                myPhotosAdapter.notifyDataSetChanged();
             }
 
             @Override

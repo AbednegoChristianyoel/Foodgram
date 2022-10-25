@@ -12,4 +12,5 @@
     <color name="darkgreen">#3F4E4F</color>
     <color name="drakgrey">#303E3F</color>
     <color name="grey">#808080</color>
+    <color name="greytrans">#2AB1ABAB</color>
 </resources>

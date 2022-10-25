@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -20,6 +22,7 @@ import com.example.foodgram.Fragment.ProfileFragment;
 import com.example.foodgram.Model.Post;
 import com.example.foodgram.Model.User;
 import com.example.foodgram.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,6 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         Glide.with(mContext).load(post.getPostimage()).into(holder.post_image);
 
+
         //Show Desc POST
         if (post.getJudul().equals("")){
             holder.judulpost.setVisibility(View.GONE);
@@ -69,7 +73,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             holder.description.setVisibility(View.GONE);
         } else {
             holder.description.setVisibility(View.VISIBLE);
-            holder.description.setText(post.getDescription());
+            holder.description.setText(post.getDescription().replace("\\n", "\n"));
         }
 
         publisherInfo(holder.image_profile, holder.usernamepost, holder.publisher, post.getPublisher());
@@ -146,6 +150,57 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             }
         });
 
+        holder.comments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, CommentsActivity.class);
+                intent.putExtra("postid", post.getPostid());
+                intent.putExtra("publisherid", post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.postsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                        mContext, R.style.BottomSheetDialogTheme
+                );
+                View bottomSheetView = LayoutInflater.from(mContext)
+                        .inflate(R.layout.setting_sheet_bottom, null);
+
+                bottomSheetView.findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(mContext, "Button 1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                bottomSheetView.findViewById(R.id.test2).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(mContext, "Button 2", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                bottomSheetView.findViewById(R.id.test3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(mContext, "Button 3", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                bottomSheetView.findViewById(R.id.test4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(mContext, "Button 4", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
+            }
+        });
+
     }
 
     @Override
@@ -154,8 +209,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public ImageView image_profile, post_image, like, comment;
+        public ImageView image_profile, post_image, like, comment, postsetting;
         public TextView usernamepost, likes, publisher, description, judulpost, comments;
+        public LinearLayout bottomsheetcontainer;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -171,6 +227,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             description = itemView.findViewById(R.id.descriptionpost);
             judulpost = itemView.findViewById(R.id.judulpost);
             comments = itemView.findViewById(R.id.commentspost);
+            postsetting = itemView.findViewById(R.id.postsetting);
         }
     }
 
@@ -264,4 +321,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             }
         });
     }
+
+    
 }
