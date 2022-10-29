@@ -8,8 +8,9 @@ public class Post {
     private String judul;
     private String bahanres;
     private String carares;
+    private String jenismakanan;
 
-    public Post(String postid, String postimage, String description, String publisher, String judul, String bahanres, String carares) {
+    public Post(String postid, String postimage, String description, String publisher, String judul, String bahanres, String carares, String jenismakanan) {
         this.postid = postid;
         this.postimage = postimage;
         this.description = description;
@@ -19,6 +20,14 @@ public class Post {
         this.carares = carares;
     }
     public Post(){
+    }
+
+    public String getJenismakanan() {
+        return jenismakanan;
+    }
+
+    public void setJenismakanan(String jenismakanan) {
+        this.jenismakanan = jenismakanan;
     }
 
     public String getPostid() {

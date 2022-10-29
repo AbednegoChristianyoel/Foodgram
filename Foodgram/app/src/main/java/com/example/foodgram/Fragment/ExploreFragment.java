@@ -150,7 +150,9 @@ public class ExploreFragment extends Fragment {
 
     private void myPhotos(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
-        reference.addValueEventListener(new ValueEventListener() {
+        Query query =reference.orderByChild("jenisres").equalTo("Appetizer");
+
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mPost.clear();

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkgreen"
+    app:layoutDescription="@xml/activity_post_detail_scene"
+    tools:context=".PostDetail">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/jenis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Main Course"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/layout" />
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_rounded"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="5dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignBottom="@+id/judul"
+            android:alpha="0.2"
+            android:background="#808080" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/close2"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintRight_toRightOf="@id/scrollView2" />
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/arrow2"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintRight_toRightOf="@id/scrollView2" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pastel"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:justificationMode="inter_word"
+                android:text="Deskripsi"
+                android:textColor="@color/darkgreen"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
+                android:text="asdasdad"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:justificationMode="inter_word"
+                android:text="Bahan yang dibutuhkan"
+                android:textColor="@color/darkgreen"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/bahanres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
+                android:text="asdasdad"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:justificationMode="inter_word"
+                android:text="Langkah Pembuatan"
+                android:textColor="@color/darkgreen"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/carares"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingBottom="10dp"
+                android:text="asdasdad"
+                android:textColor="@color/black" />
+
+            <RelativeLayout
+                android:id="@+id/relativ2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:id="@+id/likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="15dp"
+                    android:layout_toRightOf="@+id/like"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/like"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toRightOf="@+id/comment"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/heart" />
+
+                <ImageView
+                    android:id="@+id/comment"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/comment" />
+
+                <ImageView
+                    android:id="@+id/test"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/comment"
+                    android:background="@color/black" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
+        android:background="@color/pastel"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/scrollView2" />
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

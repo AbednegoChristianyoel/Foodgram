@@ -1,5 +1,7 @@
 package com.example.foodgram.Model;
 
+import java.util.Map;
+
 public class Notification {
     private String userid;
     private String text;

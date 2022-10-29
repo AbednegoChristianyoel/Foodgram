@@ -8,6 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +25,7 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,7 +36,10 @@ import com.google.firebase.storage.UploadTask;
 import com.yalantis.ucrop.UCrop;
 
 
+import org.w3c.dom.Text;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -46,7 +53,13 @@ public class PostActivity extends AppCompatActivity {
 
     ImageView image_added, close;
     Button post;
-    EditText description, judulres, bahanres, carares ;
+    EditText description, judulres, bahanres, carares;
+    TextInputLayout jenismakanan;
+    AutoCompleteTextView autoComplete;
+    String[] arrayListjmakanan;
+    ArrayAdapter<String> arrayAdapterjmakanan;
+    String item;
+
     Boolean isUpload = false;
     String destination = UUID.randomUUID().toString() + ".jpg";
 
@@ -62,8 +75,22 @@ public class PostActivity extends AppCompatActivity {
         judulres = findViewById(R.id.judulresep);
         bahanres = findViewById(R.id.bahanresep);
         carares = findViewById(R.id.carabuatresep);
+        jenismakanan = (TextInputLayout) findViewById(R.id.jenismakanan);
+        autoComplete = (AutoCompleteTextView) findViewById(R.id.autoComplete);
+
+        arrayListjmakanan = getResources().getStringArray(R.array.jenis_makanan);
+        arrayAdapterjmakanan = new ArrayAdapter<>(getApplicationContext(), R.layout.dropdown_item, arrayListjmakanan);
+        autoComplete.setAdapter(arrayAdapterjmakanan);
+        autoComplete.setThreshold(1);
 
         storageReference = FirebaseStorage.getInstance().getReference("posts");
+
+        autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                item = adapterView.getItemAtPosition(i).toString();
+            }
+        });
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +177,7 @@ public class PostActivity extends AppCompatActivity {
                         hashMap.put("judul", judulres.getText().toString());
                         hashMap.put("bahanres", bahanres.getText().toString().replace("\n", "\\n"));
                         hashMap.put("carares", carares.getText().toString().replace("\n", "\\n"));
+                        hashMap.put("jenismakanan", item);
 
                         hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
