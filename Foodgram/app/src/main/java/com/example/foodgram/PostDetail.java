@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -30,10 +31,9 @@ import java.util.Map;
 public class PostDetail extends AppCompatActivity {
 
 
-    private ImageView postimage, like, test;
-    private TextView judul, description, bahanres, carares, jenis, likes;
+    private ImageView postimage, like, back, comment;
+    private TextView judul, description, bahanres, carares, jenis, likes, comments;
     private String postid;
-    private Map<String, String> add;
     FirebaseUser firebaseUser;
 
     @Override
@@ -42,7 +42,7 @@ public class PostDetail extends AppCompatActivity {
         setContentView(R.layout.activity_post_detail);
 
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        postid = preferences.getString("postid","none");
+        postid = preferences.getString("postid", "none");
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         judul = findViewById(R.id.judul);
@@ -53,9 +53,16 @@ public class PostDetail extends AppCompatActivity {
         jenis = findViewById(R.id.jenis);
         likes = findViewById(R.id.likes);
         like = findViewById(R.id.like);
-        test = findViewById(R.id.test);
+        back = findViewById(R.id.back);
+        comments = findViewById(R.id.comments);
+        comment = findViewById(R.id.comment);
 
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         showData();
 
@@ -66,7 +73,7 @@ public class PostDetail extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(getApplicationContext() == null){
+                if (getApplicationContext() == null) {
                     return;
                 }
 
@@ -83,31 +90,31 @@ public class PostDetail extends AppCompatActivity {
                 like.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(like.getTag().equals("like")){
+                        if (like.getTag().equals("like")) {
                             FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
                                     .child(firebaseUser.getUid()).setValue(true);
                             addNotifications(post.getPublisher(), post.getPostid());
-                            add = ServerValue.TIMESTAMP;
 
-                        }else if(like.getTag().equals("liked")){
+                        } else if (like.getTag().equals("liked")) {
                             FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
                                     .child(firebaseUser.getUid()).removeValue();
-                            //deleteNotifications(post.getPostid(), firebaseUser.getUid(), post.getPublisher());
                         }
                     }
                 });
 
-                test.setOnClickListener(new View.OnClickListener() {
+                comment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //deleteNotifications(post.getPostid(), firebaseUser.getUid(), post.getPublisher());
+                        Intent intent = new Intent(getApplicationContext(), CommentsActivity.class);
+                        intent.putExtra("postid", post.getPostid());
+                        intent.putExtra("publisherid", post.getPublisher());
+                        startActivity(intent);
                     }
                 });
 
-
                 nrLikes(likes, post.getPostid());
                 isLikes(post.getPostid(), like);
-
+                getComments(post.getPostid(), comments);
             }
 
             @Override
@@ -116,13 +123,14 @@ public class PostDetail extends AppCompatActivity {
             }
         });
     }
-    private void nrLikes(final TextView likes, String postid){
+
+    private void nrLikes(final TextView likes, String postid) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Likes").child(postid);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                likes.setText(snapshot.getChildrenCount()+" likes");
+                likes.setText(snapshot.getChildrenCount() + " likes");
             }
 
             @Override
@@ -132,7 +140,7 @@ public class PostDetail extends AppCompatActivity {
         });
     }
 
-    private void isLikes(String postid, ImageView imageView){
+    private void isLikes(String postid, ImageView imageView) {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
@@ -142,15 +150,16 @@ public class PostDetail extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(firebaseUser.getUid()).exists()){
+                if (dataSnapshot.child(firebaseUser.getUid()).exists()) {
                     imageView.setImageResource(R.drawable.heartfill);
                     imageView.setTag("liked");
 
-                }else{
+                } else {
                     imageView.setImageResource(R.drawable.heart);
                     imageView.setTag("like");
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -158,7 +167,7 @@ public class PostDetail extends AppCompatActivity {
         });
     }
 
-    private void addNotifications(String notifto, String postid){
+    private void addNotifications(String notifto, String postid) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(notifto);
 
@@ -166,19 +175,19 @@ public class PostDetail extends AppCompatActivity {
 
         HashMap<String, Object> hashMap = new HashMap<>();
 
-        hashMap.put("userid",firebaseUser.getUid());
+        hashMap.put("userid", firebaseUser.getUid());
         hashMap.put("text", "liked your post");
         hashMap.put("postid", postid);
         hashMap.put("ispost", true);
         hashMap.put("notifid", notifid);
-        hashMap.put("test", firebaseUser.getUid() + postid);
+        hashMap.put("key", firebaseUser.getUid() + postid);
 
-        reference.orderByChild("test").equalTo(firebaseUser.getUid() + postid).addValueEventListener(new ValueEventListener() {
+        reference.orderByChild("key").equalTo(firebaseUser.getUid() + postid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
 //                    snapshot.getRef().removeValue();
-                }else{
+                } else {
                     reference.child(notifid).setValue(hashMap);
                 }
             }
@@ -191,26 +200,20 @@ public class PostDetail extends AppCompatActivity {
 
     }
 
+    private void getComments(String postid, final TextView comments){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Comments").child(postid);
 
-//    private void deleteNotifications(final String postid, String userid, String publisherid){
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    if(snapshot.child("userid").getValue().equals(publisherid)){
-//                        if(snapshot.child("postid").getValue().equals(postid)){
-//                            snapshot.getRef().removeValue();
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                comments.setText(snapshot.getChildrenCount() + " Comments");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }

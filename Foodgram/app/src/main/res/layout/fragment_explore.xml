@@ -54,12 +54,119 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bar">
-
-        <androidx.recyclerview.widget.RecyclerView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recycler_viewExplore" />
+            android:layout_below="@id/bar"
+            android:background="@color/pastel">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bar"
+                    android:layout_margin="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Mau masak apa hari ini ?"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bar"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Yuk cek menu-menu enak hari ini"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_below="@id/bar"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Appetizer"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="24dp"/>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/appetizerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_below="@id/bar"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Main Course"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="24dp"/>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/mainCourseView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bar"
+                    android:layout_marginStart="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Dessert"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="24dp"/>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/dessertView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bar"
+                    android:layout_marginStart="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Minuman"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="24dp"/>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/minumanView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"/>
+            </LinearLayout>
+        </ScrollView>
+
 
     </LinearLayout>
+
 
 </RelativeLayout>

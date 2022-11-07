@@ -83,29 +83,53 @@
                 android:textSize="25dp" />
 
 
-            <EditText
-                android:id="@+id/judulresep"
+            <com.google.android.material.textfield.TextInputLayout
+                style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:counterEnabled="true"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:background="@drawable/postframe"
-                android:hint="Tulis nama resepmu disini!"
-                android:padding="10dp"
-                android:paddingStart="20dp" />
+                app:counterMaxLength="20">
 
-            <EditText
-                android:id="@+id/descresep"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/judulresep"
+                    android:hint="Tulis Judul resepmu disini!"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="20"
+                    android:inputType="textCapWords"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/postframe"
-                android:hint="Tulis deskripsi resepmu disini!"
-                android:inputType="textMultiLine"
-                android:padding="50dp"
-                android:paddingStart="20dp" />
+                android:layout_marginEnd="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descresep"
+                    android:hint="Tulis deskripsi resepmu disini!"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    android:inputType="textMultiLine"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,18 +140,28 @@
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 
-            <EditText
-                android:id="@+id/bahanresep"
+            <com.google.android.material.textfield.TextInputLayout
+                style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/postframe"
-                android:hint="Tulis bahan-bahan yang diperlukan disini!"
-                android:inputType="textMultiLine"
-                android:padding="50dp"
-                android:paddingStart="20dp" />
+                android:layout_marginEnd="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bahanresep"
+                    android:hint="Tulis bahan-bahan yang diperlukan disini!"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="50dp"
+                    android:inputType="textMultiLine"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,18 +172,28 @@
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 
-            <EditText
-                android:id="@+id/carabuatresep"
+            <com.google.android.material.textfield.TextInputLayout
+                style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/postframe"
-                android:hint="Tulis cara pembuatan disini!"
-                android:inputType="textMultiLine"
-                android:padding="50dp"
-                android:paddingStart="20dp" />
+                android:layout_marginEnd="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/carabuatresep"
+                    android:hint="Tulis cara pembuatan disini!"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="50dp"
+                    android:inputType="textMultiLine"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"

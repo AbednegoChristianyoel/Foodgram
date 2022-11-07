@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodgram.CommentsActivity;
 import com.example.foodgram.Fragment.BottomNav;
-import com.example.foodgram.Fragment.PostDetailFragment;
 import com.example.foodgram.Fragment.ProfileFragment;
 import com.example.foodgram.Model.Post;
 import com.example.foodgram.Model.User;

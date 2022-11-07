@@ -13,13 +13,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_bg"
+        android:padding="8dp"
+        android:src="@drawable/backicon_black2"
+        app:layout_constraintTop_toTopOf="@+id/image"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <ImageView
+        android:id="@+id/bookmark"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="@id/image"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/circle_bg"
+        android:padding="8dp"
+        android:src="@drawable/bookmark"
+        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_editor_absoluteY="10dp"/>
+
     <TextView
         android:id="@+id/jenis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
-        android:text="Main Course"
         android:padding="10dp"
+        android:text="Main Course"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -39,47 +63,74 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:padding="5dp"
+            android:paddingTop="10dp"
             android:paddingStart="20dp"
+            android:text="Gurame Asam Manis"
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="30dp" />
 
-        <View
-            android:id="@+id/line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignBottom="@+id/judul"
-            android:alpha="0.2"
-            android:background="#808080" />
-
+        <LinearLayout
+            android:id="@+id/layoutjudul"
+            android:layout_below="@+id/judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:text="10000 likes" />
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:text="1000 comments"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/close"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/close2"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintRight_toRightOf="@id/scrollView2" />
+        android:id="@+id/swipe"
+        android:layout_width="100dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="5dp"
+        android:alpha="0.7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/layout"/>
 
-    <ImageView
-        android:id="@+id/arrow"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/arrow2"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintRight_toRightOf="@id/scrollView2" />
+<!--    <ImageView-->
+<!--        android:id="@+id/close"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginEnd="40dp"-->
+<!--        android:layout_marginBottom="55dp"-->
+<!--        android:src="@drawable/close3"-->
+<!--        android:padding="5dp"-->
+<!--        android:background="@drawable/circle_bg"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/scrollView2"-->
+<!--        app:layout_constraintRight_toRightOf="@id/scrollView2" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/arrow"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginEnd="40dp"-->
+<!--        android:layout_marginBottom="55dp"-->
+<!--        android:background="@drawable/circle_bg"-->
+<!--        android:padding="10dp"-->
+<!--        android:src="@drawable/arrowslide"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/scrollView2"-->
+<!--        app:layout_constraintRight_toRightOf="@id/scrollView2" />-->
 
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         app:layout_constraintTop_toBottomOf="@+id/layout">
 
         <LinearLayout
@@ -148,16 +199,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp">
 
-                <TextView
-                    android:id="@+id/likes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="15dp"
-                    android:layout_toRightOf="@+id/like"
-                    android:paddingTop="5dp"
-                    android:textColor="@color/black" />
-
                 <ImageView
                     android:id="@+id/like"
                     android:layout_width="40dp"
@@ -173,17 +214,11 @@
                     android:paddingLeft="10dp"
                     android:src="@drawable/comment" />
 
-                <ImageView
-                    android:id="@+id/test"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_below="@+id/comment"
-                    android:background="@color/black" />
-
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -10,12 +10,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodgram.Fragment.BottomNav;
-import com.example.foodgram.Fragment.PostDetailFragment;
 import com.example.foodgram.Model.Post;
 import com.example.foodgram.PostDetail;
 import com.example.foodgram.R;
@@ -65,9 +63,6 @@ public class MyPhotosAdapter extends RecyclerView.Adapter<MyPhotosAdapter.ViewHo
         return mPosts.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-
-
-
 
         public ImageView post_image;
 
