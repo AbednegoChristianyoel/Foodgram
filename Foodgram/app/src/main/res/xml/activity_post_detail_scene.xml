@@ -46,6 +46,53 @@
             android:layout_marginEnd="40dp"
             motion:layout_constraintRight_toRightOf="@id/scrollView2"
             android:alpha="1" />
+        <Constraint
+            android:id="@+id/like"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            motion:layout_constraintRight_toLeftOf="@id/bookmark"
+            motion:layout_constraintTop_toTopOf="@id/image"
+            android:layout_marginRight="10dp"
+            motion:layout_editor_absoluteY="10dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/comment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            motion:layout_constraintRight_toLeftOf="@id/like"
+            motion:layout_constraintTop_toTopOf="@id/image"
+            android:layout_marginRight="10dp"
+            motion:layout_editor_absoluteY="10dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0"
+            android:visibility="visible" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/image"
+            android:id="@+id/layout"
+            motion:layout_constraintTop_toBottomOf="@+id/image" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/image" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/image" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/image" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/image" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/image" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -53,7 +100,7 @@
             android:layout_height="wrap_content"
             motion:layout_editor_absoluteX="0dp"
             motion:layout_constraintBottom_toBottomOf="@id/image"
-            android:layout_marginBottom="240dp"
+            android:layout_marginBottom="210dp"
             android:layout_width="match_parent"
             android:id="@+id/layout" />
         <Constraint
@@ -87,5 +134,26 @@
             android:layout_marginEnd="40dp"
             motion:layout_constraintRight_toRightOf="@id/scrollView2"
             android:alpha="0" />
+        <Constraint
+            android:id="@+id/like"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            motion:layout_constraintRight_toLeftOf="@id/bookmark"
+            motion:layout_constraintTop_toTopOf="@id/image"
+            android:layout_marginRight="10dp"
+            motion:layout_editor_absoluteY="10dp"
+            android:layout_marginTop="16dp"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/comment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            motion:layout_constraintRight_toLeftOf="@id/like"
+            motion:layout_constraintTop_toTopOf="@id/image"
+            android:layout_marginRight="10dp"
+            motion:layout_editor_absoluteY="10dp"
+            android:layout_marginTop="16dp"
+            android:alpha="1"
+            android:visibility="visible" />
     </ConstraintSet>
 </MotionScene>

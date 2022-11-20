@@ -9,4 +9,10 @@
         <item>Dessert</item>
         <item>Minuman</item>
     </string-array>
+
+    <string-array name="Report">
+        <item>Informasi Palsu</item>
+        <item>Pelanggaran hak kekayaan intelektual</item>
+        <item>Bukan Makanan</item>
+    </string-array>
 </resources>

@@ -1,8 +1,10 @@
 package com.example.foodgram.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 
 public class ExploreFragment extends Fragment {
@@ -47,7 +50,6 @@ public class ExploreFragment extends Fragment {
 
     ViewPager2 appetizerView, mainCourseView, dessertView, minumanView;
     private CarouselAdapter AdapterAppetizer, AdapterMainCourse, AdapterDessert, AdapterMinuman;
-
 
     EditText search_bar;
     LinearLayout explore;
@@ -87,10 +89,10 @@ public class ExploreFragment extends Fragment {
         mPostDessert = new ArrayList<>();
         mPostMinuman = new ArrayList<>();
 
-        AdapterAppetizer = new CarouselAdapter(mPostAppetizer);
-        AdapterMainCourse = new CarouselAdapter(mPostMainCourse);
-        AdapterDessert = new CarouselAdapter(mPostDessert);
-        AdapterMinuman = new CarouselAdapter(mPostMinuman);
+        AdapterAppetizer = new CarouselAdapter(mPostAppetizer, getContext());
+        AdapterMainCourse = new CarouselAdapter(mPostMainCourse, getContext());
+        AdapterDessert = new CarouselAdapter(mPostDessert, getContext());
+        AdapterMinuman = new CarouselAdapter(mPostMinuman, getContext());
         userAdapter = new UserAdapter(getContext(), mUsers);
 
         recyclerView.setAdapter(userAdapter);
@@ -172,9 +174,13 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listmakanan.clear();
+                int count = 0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Post post = dataSnapshot.getValue(Post.class);
-                    listmakanan.add(post);
+                    count += 1;
+                    if(count < 10){
+                        Post post = dataSnapshot.getValue(Post.class);
+                        listmakanan.add(post);
+                    }
                 }
 
                 adaptermakanan.notifyDataSetChanged();
@@ -201,7 +207,7 @@ public class ExploreFragment extends Fragment {
             @Override
             public void transformPage(@NonNull View page, float position) {
                 float r = 1 - Math.abs(position);
-                page.setScaleY(0.85f + r * 0.2f);
+                page.setScaleY(0.85f + r * 0.1f);
             }
         });
 

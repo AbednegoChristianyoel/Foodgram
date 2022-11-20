@@ -32,12 +32,15 @@
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/arrowslide.xml" value="0.317" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/backicon.xml" value="0.3665" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/backicon_black.xml" value="0.317" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/backicon_black2.xml" value="0.3115" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/backicon_white.xml" value="0.3425" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/bookmark.xml" value="0.204" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/bookmark_fill.xml" value="0.204" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/bookmarkfill.xml" value="0.2625" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/bot_rounded.xml" value="0.2935" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/bottomline.xml" value="0.36" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/btn_follow.xml" value="0.3745" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/btn_glob.xml" value="0.3115" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/btn_round_dark.xml" value="0.3745" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/button_round.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/camera.xml" value="0.317" />
@@ -52,19 +55,37 @@
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.194" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_explore.xml" value="0.332" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_launcher_background.xml" value="0.194" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_like.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_option.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_post.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/ic_profile.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/lock.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/person.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/phone.xml" value="0.3115" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/postframe.xml" value="0.3755" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/remove_person.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/report.xml" value="0.3115" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/rounded.xml" value="0.2935" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/search.xml" value="0.3755" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/send.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/settings.xml" value="0.3115" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/sheetbase.xml" value="0.34" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/star_border.xml" value="0.3115" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/top_rounded.xml" value="0.3755" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/uploadcloud.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/drawable/verticalthreedots.xml" value="0.3115" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_bookmark.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_comments.xml" value="0.33" />
-        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_edit_profile.xml" value="0.18958333333333333" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_edit_profile.xml" value="0.22" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_likes.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_post.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_post_detail.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_search.xml" value="0.48616600790513836" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/activity_settings.xml" value="0.33" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/bookmark_item.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/bottom_nav.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/comments_item.xml" value="0.37395833333333334" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/dropdown_item.xml" value="0.33" />
@@ -82,7 +103,8 @@
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/notification_item.xml" value="0.375" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/post_item.xml" value="0.5" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/register.xml" value="0.375" />
-        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/setting_sheet_bottom.xml" value="0.37395833333333334" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/report_sheet_bottom.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/setting_sheet_bottom.xml" value="0.5" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/test.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/layout/user_item.xml" value="0.33" />
         <entry key="..\:/Users/Iftah/Documents/GitHub/Foodgram/Foodgram/Foodgram/app/src/main/res/menu/bottom_nav_menu.xml" value="0.375" />

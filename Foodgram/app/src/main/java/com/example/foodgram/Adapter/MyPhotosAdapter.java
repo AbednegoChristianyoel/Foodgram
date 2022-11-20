@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.foodgram.Fragment.BottomNav;
+import com.example.foodgram.Model.Bookmark;
 import com.example.foodgram.Model.Post;
-import com.example.foodgram.PostDetail;
+import com.example.foodgram.PostDetailActivity;
 import com.example.foodgram.R;
 
 import java.util.List;
@@ -44,16 +45,12 @@ public class MyPhotosAdapter extends RecyclerView.Adapter<MyPhotosAdapter.ViewHo
         holder.post_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(context instanceof BottomNav){
-                    SharedPreferences.Editor editor = context.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-                    editor.putString("postid", post.getPostid());
-                    editor.apply();
+                SharedPreferences.Editor editor = context.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                editor.putString("postid", post.getPostid());
+                editor.apply();
 
-                    Intent intent = new Intent(context, PostDetail.class);
-                    context.startActivity(intent);
-                }else{
-                    Toast.makeText(context, "test", Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent(context, PostDetailActivity.class);
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }

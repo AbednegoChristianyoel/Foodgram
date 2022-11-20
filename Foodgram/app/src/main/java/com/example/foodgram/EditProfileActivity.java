@@ -2,9 +2,13 @@ package com.example.foodgram;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -17,9 +21,12 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.example.foodgram.Fragment.BottomNav;
 import com.example.foodgram.Model.User;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,23 +38,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+import com.yalantis.ucrop.UCrop;
 //import com.google.firebase.storage.StorageTask;
 
+import java.io.File;
 import java.lang.ref.Reference;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.UUID;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     ImageView back , img_profile;
-    TextView dp_change;
+    TextView dp_change, numphone;
     Button save;
     TextInputEditText nama,bio, mail ;
     FirebaseUser firebaseUser;
 
-    //    private Uri mImageUri;
-//    private StorageTask uploadTask;
+    private StorageTask uploadTask;
     StorageReference storageRef;
+    String destination = UUID.randomUUID().toString() + ".jpg";
+    private Uri mImageUri;
+    String myUrl = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +75,10 @@ public class EditProfileActivity extends AppCompatActivity {
         nama = findViewById(R.id.txtName);
         bio = findViewById(R.id.txtBio);
         mail = findViewById(R.id.txtEmail);
-//        phone = findViewById(R.id.numPhone);
-//        gender = findViewById(R.id.txtGender);
+        numphone = findViewById(R.id.numPhone);
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        storageRef = FirebaseStorage.getInstance().getReference("uploads");
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -76,10 +88,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 nama.setText(user.getNama());
                 bio.setText(user.getBio());
                 mail.setText(user.getEmail());
-                //Phone
-//                phone.setText(user.());
-                //gender
-//                gender.setText(user.getBio());
+                numphone.setText(user.getNophone());
                 Glide.with(getApplicationContext()).load(user.getImageurl()).into(img_profile);
             }
 
@@ -96,27 +105,128 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-//        dp_change.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//               CropImage.activity()
-//                      .setAspectRatio(1);
-//            }
-//        });
-
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateProfile(nama.getText().toString(),
                         bio.getText().toString(),
                         mail.getText().toString());
-                onBackPressed();
+                finish();
 
             }
 
         });
 
+        storageRef = FirebaseStorage.getInstance().getReference("PhotoProfile");
+
+        dp_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectImage();
+            }
+        });
     }
+
+    private void selectImage(){
+        final CharSequence[] items = {"Choose from Gallery", "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditProfileActivity.this);
+        builder.setTitle(getString(R.string.app_name));
+        builder.setItems(items, (dialog, item) ->{
+            if(items[item].equals("Choose from Gallery")){
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, 20);
+            }else if(items[item].equals("Cancel")){
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 20 && resultCode==RESULT_OK && data !=null){
+            final Uri path = data.getData();
+
+            UCrop.Options options = new UCrop.Options();
+            options.setCircleDimmedLayer(true);
+            UCrop.of(path, Uri.fromFile(new File(getCacheDir(), destination)))
+                    .withAspectRatio(1,1)
+                    .withOptions(options)
+                    .start(this);
+
+        }else if(resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP){
+            Uri resulturi = UCrop.getOutput(data);
+            mImageUri = resulturi;
+            img_profile.setImageURI(mImageUri);
+            img_profile.setBackgroundResource(0);
+            upload_image();
+        }else{
+            Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+            finish();
+        }
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void upload_image(){
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage("Posting");
+        pd.show();
+
+        if (mImageUri != null){
+            final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
+                    + "." + getFileExtension(mImageUri));
+
+            uploadTask = fileReference.putFile(mImageUri);
+            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    return fileReference.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        myUrl = downloadUri.toString();
+
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("imageurl", myUrl);
+
+
+                        reference.updateChildren(hashMap);
+
+                        pd.dismiss();
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(getApplicationContext(), "No image selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     private void updateProfile(String name, String bio, String mail) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
@@ -138,71 +248,4 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
-
-    private String getFileExtension(Uri uri){
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-    }
-
-//    private void UploadImg(){
-//        ProgressDialog pd = new ProgressDialog(this);
-//        pd.setMessage("Uploading");
-//        pd.show();
-//
-//        if (mImageUri != null) {
-//            StorageReference filereference = storageRef.child(System.currentTimeMillis()
-//            +"."+ getFileExtension(mImageUri));
-//
-//            uploadTask = filereference.putFile(mImageUri);
-//            uploadTask.continueWithTask(new Continuation() {
-//                @Override
-//                public Object then(@NonNull Task task) throws Exception {
-//                    if (!task.isSuccessful()){
-//                        throw task.getException();
-//                    }
-//                    return  filereference.getDownloadUrl();
-//                }
-//            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Uri> task) {
-//                    if (task.isSuccessful()){
-//                        Uri downloadUri = task.getResult();
-//                        String myUrl = downloadUri.toString();
-//
-//                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-//
-//                        HashMap<String,Object> hashMap = new HashMap<>();
-//                        hashMap.put("imageurl", ""+myUrl);
-//
-//                        reference.updateChildren(hashMap);
-//                        pd.dismiss();
-//                    } else {
-//                        Toast.makeText(EditProfileActivity.this, "Failed",Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            }).addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception e) {
-//                    Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }else {
-//            Toast.makeText(this,"No image selected", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-//            if (resultCode == RESULT_OK) {
-//                Uri resultUri = result.getUri();
-//            } else {
-//                Toast.makeText(this, "something gone wrong", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
-//    }
 }

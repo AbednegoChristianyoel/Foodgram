@@ -28,30 +28,53 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/unfollow"
+            android:id="@+id/reportText_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="#808080"
-            android:drawableLeft="@drawable/remove_person"
             android:drawablePadding="20dp"
-            android:text="Berhenti mengikuti"
-            android:textSize="20dp"
+            android:text="Informasi Palsu"
+            android:textSize="17dp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins"/>
 
         <TextView
-            android:id="@+id/report"
+            android:id="@+id/reportText_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="#808080"
-            android:drawableLeft="@drawable/report"
             android:drawablePadding="20dp"
-            android:text="Laporkan"
-            android:textSize="20dp"
-            android:textColor="#ff0000"
+            android:text="Pelanggaran hak kekayaan intelektual"
+            android:textSize="17dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"/>
+
+        <TextView
+            android:id="@+id/reportText_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#808080"
+            android:drawablePadding="20dp"
+            android:text="Bukan Makanan"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"/>
+
+        <TextView
+            android:id="@+id/reportText_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#808080"
+            android:drawablePadding="20dp"
+            android:text="Ujaran kebencian"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"/>
+
 
     </LinearLayout>
 

@@ -17,7 +17,7 @@ import com.example.foodgram.Fragment.ProfileFragment;
 import com.example.foodgram.Model.Notification;
 import com.example.foodgram.Model.Post;
 import com.example.foodgram.Model.User;
-import com.example.foodgram.PostDetail;
+import com.example.foodgram.PostDetailActivity;
 import com.example.foodgram.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -67,7 +67,7 @@ import java.util.List;
                      editor.putString("postid", notification.getPostid());
                      editor.apply();
 
-                     Intent intent = new Intent(mContext, PostDetail.class);
+                     Intent intent = new Intent(mContext, PostDetailActivity.class);
                      mContext.startActivity(intent);
                  }else{
                      SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();

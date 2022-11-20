@@ -18,58 +18,58 @@
         android:textSize="40dp" />
 
     <LinearLayout
+        android:id="@+id/form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/form"
-        android:layout_below="@+id/Textreg" >
+        android:layout_below="@+id/Textreg"
+        android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/namereglay"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="340dp"
             android:layout_height="65dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            app:startIconDrawable="@drawable/person" >
+            app:startIconDrawable="@drawable/person">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/namereg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:inputType="textCapWords"
-                android:hint="Nama" />
+                android:hint="Nama"
+                android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/emailreglay"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="340dp"
             android:layout_height="65dp"
             android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginTop="15dp"
-            app:startIconDrawable="@drawable/email" >
+            android:layout_marginEnd="32dp"
+            app:startIconDrawable="@drawable/email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailreg"
-                android:inputType="textLongMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:hint="Email" />
+                android:hint="Email"
+                android:inputType="textLongMessage" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/phonereglay"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="340dp"
             android:layout_height="65dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="32dp"
-            app:startIconDrawable="@drawable/phone" >
+            app:startIconDrawable="@drawable/phone">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phonereg"
@@ -77,19 +77,19 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:hint="Nomor Telepon"
-                android:inputType="number"/>
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/passwordreglay"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="340dp"
             android:layout_height="65dp"
             android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginTop="15dp"
-            app:startIconDrawable="@drawable/lock"
-            app:passwordToggleEnabled="true">
+            android:layout_marginEnd="32dp"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/lock">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordreg"
@@ -97,18 +97,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:hint="Kata Sandi"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/agereglay"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="340dp"
             android:layout_height="65dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="32dp"
-            app:startIconDrawable="@drawable/date" >
+            app:startIconDrawable="@drawable/date">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/agereg"
@@ -116,25 +116,15 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:hint="Umur"
-                android:inputType="number"/>
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/form"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:checked="false"
-        android:text="I have read and agree to the Privacy Policy, Terms of Service, and Community Guidelines" />
 
     <Button
         android:id="@+id/btn_regis"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/checkbox"
+        android:layout_below="@+id/form"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:alpha="0.6"

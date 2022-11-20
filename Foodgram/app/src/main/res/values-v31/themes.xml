@@ -26,4 +26,11 @@
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+    
+    <style name="LargeDrawable">
+        <item name="android:textSize">10sp</item>
+        <item name="android:scaleX">1.6</item>
+        <item name="android:scaleY">1.6</item>
+    </style>
+
 </resources>

@@ -97,17 +97,35 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         });
     }
 
-    private void addNotifications(String userid){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
+    private void addNotifications(String id_profile){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(id_profile);
 
         HashMap<String, Object> hashMap = new HashMap<>();
+
+        String notifid = reference.push().getKey();
 
         hashMap.put("userid",firebaseUser.getUid());
         hashMap.put("text", "started following you");
         hashMap.put("postid", "");
         hashMap.put("ispost", false);
+        hashMap.put("notifid", notifid);
+        hashMap.put("key", firebaseUser.getUid() + id_profile);
 
-        reference.push().setValue(hashMap);
+        reference.orderByChild("key").equalTo(firebaseUser.getUid() + id_profile).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+//                    snapshot.getRef().removeValue();
+                } else {
+                    reference.child(notifid).setValue(hashMap);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

@@ -8,14 +8,24 @@ public class User {
     private String imageurl;
     private String bio;
     private String search;
+    private String nophone;
 
-    public User(String id, String email, String nama, String imageurl, String bio, String search) {
+    public User(String id, String email, String nama, String imageurl, String bio, String search, String nophone) {
         this.id = id;
         this.email = email;
         this.nama = nama;
         this.imageurl = imageurl;
         this.bio = bio;
         this.search = search;
+        this.nophone = nophone;
+    }
+
+    public String getNophone() {
+        return nophone;
+    }
+
+    public void setNophone(String nophone) {
+        this.nophone = nophone;
     }
 
     public User(){

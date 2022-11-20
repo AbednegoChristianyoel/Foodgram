@@ -21,10 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.foodgram.Adapter.MyPhotosAdapter;
 import com.example.foodgram.EditProfileActivity;
-import com.example.foodgram.LoginActivity;
 import com.example.foodgram.Model.Post;
 import com.example.foodgram.Model.User;
 import com.example.foodgram.R;
+import com.example.foodgram.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +34,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +43,7 @@ public class ProfileFragment extends Fragment {
 
     ImageView image_profile, options;
     TextView posts, followers, following, bio, username, fullname;
-    Button edit_profile, logout;
+    Button edit_profile;
 
     RecyclerView recyclerView;
     MyPhotosAdapter myPhotosAdapter;
@@ -74,16 +73,15 @@ public class ProfileFragment extends Fragment {
         bio = view.findViewById(R.id.bio);
         username = view.findViewById(R.id.username);
         edit_profile = view.findViewById(R.id.edit_profile);
-        logout = view.findViewById(R.id.logout);
+        options = view.findViewById(R.id.settingAcc);
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
             }
         });
+
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -99,7 +97,7 @@ public class ProfileFragment extends Fragment {
         myPhotos();
 
         if(profileid.equals(firebaseUser.getUid())){
-            edit_profile.setText("Edit Profile");
+            edit_profile.setVisibility(View.GONE);
         } else {
             checkFollow();
         }
@@ -117,7 +115,7 @@ public class ProfileFragment extends Fragment {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
                             .child("followers").child(firebaseUser.getUid()).setValue(true);
 
-                    addNotifications();
+                    addNotifications(profileid);
 
                 } else if (btn.equals("following")) {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
@@ -133,18 +131,38 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    private void addNotifications(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(profileid);
+    private void addNotifications(String id_profile){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(id_profile);
 
         HashMap<String, Object> hashMap = new HashMap<>();
+
+        String notifid = reference.push().getKey();
 
         hashMap.put("userid",firebaseUser.getUid());
         hashMap.put("text", "started following you");
         hashMap.put("postid", "");
         hashMap.put("ispost", false);
+        hashMap.put("notifid", notifid);
+        hashMap.put("key", firebaseUser.getUid() + id_profile);
 
-        reference.push().setValue(hashMap);
+        reference.orderByChild("key").equalTo(firebaseUser.getUid() + id_profile).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+//                    snapshot.getRef().removeValue();
+                } else {
+                    reference.child(notifid).setValue(hashMap);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
+
     private  void userInfo() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(profileid);
         reference.addValueEventListener(new ValueEventListener() {
