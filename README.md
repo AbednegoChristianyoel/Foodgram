@@ -1,3 +1,3 @@
 # Foodgram
 
-Project Pemprograman Mobile
+Foodgram, Aplikasi sosial media khusus tentang makanan berbasis Android
